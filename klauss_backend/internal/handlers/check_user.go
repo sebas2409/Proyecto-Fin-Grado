@@ -21,9 +21,11 @@ func CheckUser(ctx *gin.Context) {
 	}
 	user.Id = primitive.NewObjectID()
 	logger.Info(fmt.Sprintf("se recibio el usuario: %s", user.Name))
-	err = client.Database("klauss_artesanal").Collection("users").FindOne(ctx, bson.D{
-		{"phone", user.Phone},
-	}).Decode(&user)
+	err = client.
+		Database("klauss_artesanal").
+		Collection("users").
+		FindOne(ctx, bson.D{{"phone", user.Phone}}).
+		Decode(&user)
 
 	if err != nil {
 		logger.Info(fmt.Sprintf("No se encontro el usuario: %s, se procedera a guardarlo en la base de datos", user.Name))

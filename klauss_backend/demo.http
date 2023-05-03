@@ -5,13 +5,37 @@ Content-Type: application/json
   "phone": "987654321",
   "name": "Juan Sebastian"
 }
+
 ###
 GET localhost:8080/api/v1/product/all
+
 ###
 POST localhost:8080/api/v1/order/id
 Content-Type: application/json
 
 {
-  "id": "64519a492c635f01033a6e74",
-  "phone": "34633112163"
+  "id": "64519a492c635f01033a6e74"
+}
+
+###
+POST localhost:8080/api/v1/order/new
+Content-Type: application/json
+
+{
+  "productos": [
+    {
+      "nombre": "Pan integral con frutos secos (arandanos, nuez y ajonjoli)",
+      "precio": 2500,
+      "cantidad": 1
+    }
+  ],
+  "cliente": "34633112163"
+}
+###
+POST localhost:8080/api/v1/order/state
+Content-Type: application/json
+
+{
+  "id": "64524852ce254ce6dda8ce52",
+  "estado": "EN COCINA"
 }

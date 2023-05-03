@@ -11,7 +11,7 @@ import (
 )
 
 func GetOrderById(ctx *gin.Context) {
-	var order dto.Order
+	var order dto.OrderId
 	var completeOrder models.Order
 	err := ctx.BindJSON(&order)
 	if err != nil {
@@ -28,8 +28,8 @@ func GetOrderById(ctx *gin.Context) {
 		})
 		return
 	}
+	logger.Info("Petición de estado de orden recibida y encontrada")
 	ctx.JSON(200, gin.H{
 		"estado": completeOrder.Estado,
 	})
-
 }

@@ -4,7 +4,7 @@ import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type Order struct {
 	Id        primitive.ObjectID `json:"id" bson:"_id"`
-	Productos []Product          `json:"products" bson:"productos"`
+	Productos []OrderProduct     `json:"products" bson:"productos"`
 	Total     int32              `json:"total" bson:"total"`
 	Cliente   string             `json:"cliente" bson:"cliente"`
 	Estado    string             `json:"estado" bson:"estado"`

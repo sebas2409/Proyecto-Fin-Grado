@@ -27,6 +27,8 @@ func StartServer() {
 	orderRoute := server.Group("/api/v1/order")
 	{
 		orderRoute.POST("/id", handlers.GetOrderById)
+		orderRoute.POST("/new", handlers.NewOrder)
+		orderRoute.POST("/state", handlers.UpdateOrderState)
 	}
 
 	err := server.Run()
