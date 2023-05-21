@@ -14,7 +14,6 @@ func InitDb() *mongo.Client {
 	client, err := mongo.Connect(ctx, clientOptions)
 	if err != nil {
 		log.Fatal(err)
-
 	}
 	return client
 }

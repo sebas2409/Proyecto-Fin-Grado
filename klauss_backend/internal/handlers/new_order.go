@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -63,6 +64,7 @@ func NewOrder(ctx *gin.Context) {
 		logger.Error("No se pudo insertar la orden")
 		return
 	} else {
+
 		for _, producto := range products {
 			for i, ingredient := range producto.Ingredients {
 				var stock models.Stock
@@ -73,7 +75,7 @@ func NewOrder(ctx *gin.Context) {
 					Decode(&stock)
 
 				if err != nil {
-					logger.Error("No se pudo encontrar el producto en el stock por que: " + err.Error())
+					logger.Error(fmt.Sprintf("No se pudo encontrar el producto %s en el stock por que: ", ingredient.Name) + err.Error())
 					return
 				}
 				stock.Cantidad -= producto.Ingredients[i].Quantity
@@ -82,7 +84,7 @@ func NewOrder(ctx *gin.Context) {
 						Collection("stock").
 						UpdateOne(ctx, bson.M{"nombre": bson.M{"$eq": ingredient.Name}}, bson.M{"$set": bson.M{"cantidad": stock.Cantidad}})
 				if err2 != nil {
-					logger.Error("No se pudo actualizar el stock por que: " + err.Error())
+					logger.Error("No se pudo actualizar el stock por que: " + err2.Error())
 					return
 				}
 			}
