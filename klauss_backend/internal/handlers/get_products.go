@@ -14,6 +14,9 @@ func GetProducts(ctx *gin.Context) {
 	cursor, err := client.Database("klauss_artesanal").Collection("products").Find(ctx, bson.D{})
 	if err != nil {
 		logger.Error("No se pudo obtener los productos")
+		ctx.JSON(500, gin.H{
+			"message": "No se pudo obtener los productos",
+		})
 		return
 	}
 	for cursor.Next(ctx) {

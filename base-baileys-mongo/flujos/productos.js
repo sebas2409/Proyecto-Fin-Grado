@@ -4,7 +4,7 @@ const {get} = require("axios");
 
 const getProducts = async () => {
     const {products} = await axios.get('http://localhost:8080/api/v1/product/all').then(i => i.data)
-    return products.map(i => `${i.name} - *$ ${i.price}*`)
+    return products.map(i => `${i.name} \n Precio:  *$ ${i.price}*`)
 }
 
 const productos =

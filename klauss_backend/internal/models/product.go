@@ -6,6 +6,7 @@ type Product struct {
 	Id          primitive.ObjectID `json:"id" bson:"_id"`
 	Name        string             `json:"name" bson:"nombre"`
 	Price       int32              `json:"price" bson:"precio"`
+	Url         string             `json:"url" bson:"url"`
 	Ingredients []Ingredient       `json:"ingredients" bson:"ingredientes"`
 }
 

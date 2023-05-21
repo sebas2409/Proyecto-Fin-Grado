@@ -1,3 +1,4 @@
+### Comprobar usuario
 POST localhost:8080/api/v1/user/check
 Content-Type: application/json
 
@@ -6,10 +7,10 @@ Content-Type: application/json
   "name": "Juan Sebastian"
 }
 
-###
+###  Todos los productos
 GET localhost:8080/api/v1/product/all
 
-###
+### Pedido por id
 POST localhost:8080/api/v1/order/id
 Content-Type: application/json
 
@@ -17,7 +18,7 @@ Content-Type: application/json
   "id": "64519a492c635f01033a6e74"
 }
 
-###
+### Nuevo pedido
 POST localhost:8080/api/v1/order/new
 Content-Type: application/json
 
@@ -31,7 +32,8 @@ Content-Type: application/json
   ],
   "cliente": "34633112163"
 }
-###
+
+### Estado del pedido
 POST localhost:8080/api/v1/order/state
 Content-Type: application/json
 
