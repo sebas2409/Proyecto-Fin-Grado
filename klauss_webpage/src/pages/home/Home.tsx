@@ -26,7 +26,7 @@ export function Home() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/v1/product/all', {
+        fetch('http://192.168.1.142:8080/api/v1/product/all', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
