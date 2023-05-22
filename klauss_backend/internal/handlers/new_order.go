@@ -59,7 +59,7 @@ func NewOrder(ctx *gin.Context) {
 		Database("klauss_artesanal").
 		Collection("orders").
 		InsertOne(ctx, completeOrder)
-
+	id := one.InsertedID.(primitive.ObjectID).Hex()
 	if err != nil {
 		logger.Error("No se pudo insertar la orden")
 		return
@@ -89,9 +89,9 @@ func NewOrder(ctx *gin.Context) {
 				}
 			}
 		}
-		logger.Info("Orden insertada: " + one.InsertedID.(primitive.ObjectID).Hex())
+		logger.Info(fmt.Sprintf("Se inserto la orden con id: %s", id))
 		ctx.JSON(202, gin.H{
-			"message": "Orden recibida",
+			"msg": id,
 		})
 	}
 }

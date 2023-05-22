@@ -31,6 +31,8 @@ func StartServer() {
 		orderRoute.POST("/state", handlers.UpdateOrderState)
 	}
 
+	server.GET("/api/v1/url/:phone", handlers.GetUrl)
+
 	err := server.Run()
 	if err != nil {
 		logger.Error(fmt.Sprintf("No se pudo iniciar el servidor: %s", err.Error()))

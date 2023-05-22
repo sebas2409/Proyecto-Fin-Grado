@@ -1,12 +1,30 @@
 import {ProductStore} from "../../store/ProductStore.ts";
 import {useEffect, useState} from "react";
 import {useSearchParams} from "react-router-dom";
-import {Button, FormControl, FormLabel, Input, Text} from "@chakra-ui/react";
+import {
+    Alert,
+    AlertDescription,
+    AlertIcon,
+    AlertTitle,
+    Box,
+    Button, CloseButton,
+    FormControl,
+    FormLabel,
+    Input,
+    Text, useClipboard, useDisclosure
+} from "@chakra-ui/react";
 
 export function Payment() {
 
     const [params] = useSearchParams()
     const [data, setData] = useState<Order[]>([])
+    const { onCopy, value, setValue, hasCopied } = useClipboard("");
+    const {
+        isOpen: isVisible,
+        onClose,
+        onOpen,
+    } = useDisclosure({ defaultIsOpen: false })
+
 
     useEffect(() => {
         ProductStore.getProducts().subscribe((data) => {
@@ -84,9 +102,35 @@ export function Payment() {
                             "cliente": params.get('user'),
                             "productos": data,
                         })
-                    }).then((response) => console.log(response))
+                    }).then((response) => response.json()).then(async (data) => {
+                        setValue(data.msg)
+                        onOpen()
+                    })
                 }}>Pagar</Button>
             </div>
+            {isVisible &&
+                <Alert status='success'>
+                    <AlertIcon />
+                    <Box style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '10px'
+                    }}>
+                        <AlertTitle>Pago realizado correctamente</AlertTitle>
+                        <AlertDescription>
+                            Por favor copia este id con el cual podras consultar el estado de tu pedido: {value}
+                        </AlertDescription>
+                        <Button onClick={onCopy}>{hasCopied ? "Copiado" : "Copiar"}</Button>
+                    </Box>
+                    <CloseButton
+                        alignSelf='flex-start'
+                        position='relative'
+                        right={-1}
+                        top={-1}
+                        onClick={onClose}
+                    />
+                </Alert>
+            }
         </>
     )
 }

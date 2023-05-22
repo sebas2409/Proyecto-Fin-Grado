@@ -29,7 +29,7 @@ module.exports = {
                 buttons: [{body: 'Realizar una compra'}, {body: 'Ver nuestros productos'}, {body: 'Estado de mi pedido'}]
             }, async (ctx, {flowDynamic}) => {
                 networkCall(ctx, flowDynamic)
-                // await flowDynamic([{body: 'Realizar una compra'}, {body: 'Ver nuestros productos'}, {body: 'Estado de mi pedido'}])
+                //await flowDynamic([{body: 'Realizar una compra'}, {body: 'Ver nuestros productos'}, {body: 'Estado de mi pedido'}])
             }, [compra, productos, estadoPedido])
 
 }
