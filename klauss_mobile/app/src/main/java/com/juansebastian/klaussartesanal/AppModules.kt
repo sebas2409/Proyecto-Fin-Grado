@@ -1,7 +1,8 @@
 package com.juansebastian.klaussartesanal
 
 import com.juansebastian.klaussartesanal.page.OrderService
-import com.juansebastian.klaussartesanal.page.StockService
+import com.juansebastian.klaussartesanal.page.detail.DetailService
+import com.juansebastian.klaussartesanal.page.stock.StockService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

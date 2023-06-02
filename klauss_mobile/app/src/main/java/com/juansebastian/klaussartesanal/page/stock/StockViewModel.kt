@@ -1,4 +1,4 @@
-package com.juansebastian.klaussartesanal.page
+package com.juansebastian.klaussartesanal.page.stock
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

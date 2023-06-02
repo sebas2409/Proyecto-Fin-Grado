@@ -1,4 +1,4 @@
-package com.juansebastian.klaussartesanal.page
+package com.juansebastian.klaussartesanal
 
 data class OrderDto(
     val id: String,

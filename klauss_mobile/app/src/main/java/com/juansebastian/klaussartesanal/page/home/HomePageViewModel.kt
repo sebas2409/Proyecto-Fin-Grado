@@ -1,9 +1,10 @@
-package com.juansebastian.klaussartesanal.page
+package com.juansebastian.klaussartesanal.page.home
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.juansebastian.klaussartesanal.Order
+import com.juansebastian.klaussartesanal.page.OrderService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

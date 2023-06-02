@@ -1,4 +1,4 @@
-package com.juansebastian.klaussartesanal.page
+package com.juansebastian.klaussartesanal.page.stock
 
 import com.juansebastian.klaussartesanal.Stock
 import retrofit2.http.GET

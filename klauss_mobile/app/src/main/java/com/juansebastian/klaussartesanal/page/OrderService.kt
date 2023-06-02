@@ -1,6 +1,7 @@
 package com.juansebastian.klaussartesanal.page
 
 import com.juansebastian.klaussartesanal.Order
+import com.juansebastian.klaussartesanal.OrderDto
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST

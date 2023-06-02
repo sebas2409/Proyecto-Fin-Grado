@@ -8,9 +8,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.juansebastian.klaussartesanal.page.DetailPage
-import com.juansebastian.klaussartesanal.page.HomePage
-import com.juansebastian.klaussartesanal.page.StockPage
+import com.juansebastian.klaussartesanal.page.detail.DetailPage
+import com.juansebastian.klaussartesanal.page.home.HomePage
+import com.juansebastian.klaussartesanal.page.stock.StockPage
 import com.juansebastian.klaussartesanal.ui.theme.KlaussArtesanalTheme
 import dagger.hilt.android.AndroidEntryPoint
 
