@@ -8,7 +8,7 @@ type Order struct {
 	Total     int32              `json:"total" bson:"total"`
 	Cliente   string             `json:"cliente" bson:"cliente"`
 	Estado    string             `json:"estado" bson:"estado"`
-	Fecha     primitive.DateTime `json:"fecha" bson:"fecha"`
+	Fecha     string             `json:"fecha" bson:"fecha"`
 }
 
 type OrderProduct struct {

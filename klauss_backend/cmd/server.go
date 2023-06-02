@@ -26,9 +26,16 @@ func StartServer() {
 
 	orderRoute := server.Group("/api/v1/order")
 	{
-		orderRoute.POST("/id", handlers.GetOrderById)
+		orderRoute.GET("/all", handlers.GetOrders)
+		orderRoute.GET("/state/:id", handlers.GetOrderStateById)
 		orderRoute.POST("/new", handlers.NewOrder)
 		orderRoute.POST("/state", handlers.UpdateOrderState)
+		orderRoute.GET("/:id", handlers.GetOrderById)
+	}
+
+	stockRoute := server.Group("/api/v1/stock")
+	{
+		stockRoute.GET("/all", handlers.GetStock)
 	}
 
 	server.GET("/api/v1/url/:phone", handlers.GetUrl)

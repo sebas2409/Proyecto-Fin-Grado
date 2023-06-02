@@ -49,7 +49,7 @@ func NewOrder(ctx *gin.Context) {
 	completeOrder.Cliente = order.Cliente
 	completeOrder.Productos = order.Productos
 	completeOrder.Id = primitive.NewObjectID()
-	completeOrder.Fecha = primitive.NewDateTimeFromTime(time.Now())
+	completeOrder.Fecha = time.Now().Format("2006-01-02 15:04")
 	completeOrder.Estado = "RECIBIDO"
 	completeOrder.Total = 0
 	for _, producto := range completeOrder.Productos {

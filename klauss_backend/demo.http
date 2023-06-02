@@ -10,13 +10,11 @@ Content-Type: application/json
 ###  Todos los productos
 GET localhost:8080/api/v1/product/all
 
-### Pedido por id
-POST localhost:8080/api/v1/order/id
-Content-Type: application/json
+### Constultar estado Pedido por id
+GET localhost:8080/api/v1/order/state/6479bc23f863a63d1fb630b0
 
-{
-  "id": "64524852ce254ce6dda8ce52"
-}
+### Constultar pedido por id
+GET localhost:8080/api/v1/order/6479bc23f863a63d1fb630b0
 
 ### Nuevo pedido
 POST localhost:8080/api/v1/order/new
@@ -27,17 +25,23 @@ Content-Type: application/json
     {
       "nombre": "Pan integral con frutos secos (arandanos, nuez y ajonjoli)",
       "precio": 2500,
-      "cantidad": 1
+      "cantidad": 5
     }
   ],
   "cliente": "34633112163"
 }
 
-### Estado del pedido
+### CAMBIAR Estado del pedido
 POST localhost:8080/api/v1/order/state
 Content-Type: application/json
 
 {
-  "id": "64524852ce254ce6dda8ce52",
+  "id": "6479bc23f863a63d1fb630b0",
   "estado": "EN COCINA"
 }
+
+### Todos los pedidos
+GET localhost:8080/api/v1/order/all
+
+### Stock
+GET localhost:8080/api/v1/stock/all
