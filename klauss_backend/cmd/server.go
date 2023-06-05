@@ -36,6 +36,7 @@ func StartServer() {
 	stockRoute := server.Group("/api/v1/stock")
 	{
 		stockRoute.GET("/all", handlers.GetStock)
+		stockRoute.POST("/update", handlers.UpdateStock)
 	}
 
 	server.GET("/api/v1/url/:phone", handlers.GetUrl)

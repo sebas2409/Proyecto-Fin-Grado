@@ -25,7 +25,7 @@ Content-Type: application/json
     {
       "nombre": "Pan integral con frutos secos (arandanos, nuez y ajonjoli)",
       "precio": 2500,
-      "cantidad": 5
+      "cantidad": 2
     }
   ],
   "cliente": "34633112163"

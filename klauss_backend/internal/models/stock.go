@@ -7,3 +7,8 @@ type Stock struct {
 	Cantidad int32              `json:"cantidad" bson:"cantidad"`
 	Nombre   string             `json:"nombre" bson:"nombre"`
 }
+
+type StockDto struct {
+	Id       string `json:"id"`
+	Cantidad int32  `json:"cantidad"`
+}

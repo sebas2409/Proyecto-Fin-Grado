@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "624475112300",
+    "project_id": "klauss-artesanal",
+    "storage_bucket": "klauss-artesanal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:624475112300:android:63aa3c1d0609af5cd92949",
+        "android_client_info": {
+          "package_name": "com.juansebastian.klaussartesanal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "624475112300-k0s7u8g5ik3n3id9f9bsn96c3ih701tc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHyZbmgS7szKDXiNNfvB6YxhZ2PZcqPXE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "624475112300-k0s7u8g5ik3n3id9f9bsn96c3ih701tc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

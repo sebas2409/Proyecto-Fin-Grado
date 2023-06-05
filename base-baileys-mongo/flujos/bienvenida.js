@@ -26,10 +26,12 @@ module.exports = {
         .addAnswer('Bienvenido a Klauss Artesanal, en que te puedo ayudar?',
             {
                 capture: true,
-                buttons: [{body: 'Realizar una compra'}, {body: 'Ver nuestros productos'}, {body: 'Estado de mi pedido'}]
+                // buttons: [{body: 'Realizar una compra'}, {body: 'Ver nuestros productos'}, {body: 'Estado de mi pedido'}]
+                buttons: [{body: 'Ver nuestros productos'}, {body: 'Estado de mi pedido'}]
             }, async (ctx, {flowDynamic}) => {
                 networkCall(ctx, flowDynamic)
-                //await flowDynamic([{body: 'Realizar una compra'}, {body: 'Ver nuestros productos'}, {body: 'Estado de mi pedido'}])
-            }, [compra, productos, estadoPedido])
+                // await flowDynamic([{body: 'Realizar una compra'}, {body: 'Ver nuestros productos'}, {body: 'Estado de mi pedido'}])
+            // }, [compra, productos, estadoPedido])
+            }, [productos, estadoPedido])
 
 }

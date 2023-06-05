@@ -3,6 +3,7 @@ package handlers
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
+	pushnotifications "github.com/pusher/push-notifications-go"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"klauss_backend/internal/database"
@@ -12,13 +13,21 @@ import (
 	"time"
 )
 
+const instanceId = "7de718c8-4fbe-4413-b02d-4bca1430dcc8"
+const key = "8851289F2124013D40C6FA0C3A3B635E9AC539FF40B2DAADC5BF4A697D3E0A59"
+
 func NewOrder(ctx *gin.Context) {
 	var order dto.Order
 	var completeOrder models.Order
 	var products []models.Product
 	client := database.InitDb()
 
-	err := ctx.BindJSON(&order)
+	beamsClient, err := pushnotifications.New(instanceId, key)
+	if err != nil {
+		fmt.Println("Could not create Beams Client:", err.Error())
+	}
+
+	err = ctx.BindJSON(&order)
 	if err != nil {
 		logger.Error("No se pudo leer el body porque: " + err.Error())
 		return
@@ -90,6 +99,30 @@ func NewOrder(ctx *gin.Context) {
 			}
 		}
 		logger.Info(fmt.Sprintf("Se inserto la orden con id: %s", id))
+
+		publishRequest := map[string]interface{}{
+			"fcm": map[string]interface{}{
+				/* para que se envie una notificacion en segundo plano personalizada quitar tod0 lo de la notificacion */
+
+				"notification": map[string]interface{}{
+					"title": "Nuevo PEDIDO",
+					"body":  "HAY UN NUEVO PEDIDO",
+				},
+				//"data": map[string]interface{}{
+				//	"cuerpoMensaje": "mensaje bienvenida",
+				//	"producto1":     "llantas",
+				//	"producto2":     "neumaticos",
+				//},
+			},
+		}
+
+		pubId, err := beamsClient.PublishToInterests([]string{"hello"}, publishRequest)
+		if err != nil {
+			fmt.Println(err)
+		} else {
+			fmt.Println("Publish Id:", pubId)
+		}
+
 		ctx.JSON(202, gin.H{
 			"msg": id,
 		})

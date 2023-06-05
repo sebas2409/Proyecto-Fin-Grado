@@ -12,6 +12,7 @@ import com.juansebastian.klaussartesanal.page.detail.DetailPage
 import com.juansebastian.klaussartesanal.page.home.HomePage
 import com.juansebastian.klaussartesanal.page.stock.StockPage
 import com.juansebastian.klaussartesanal.ui.theme.KlaussArtesanalTheme
+import com.pusher.pushnotifications.PushNotifications
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,6 +21,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             KlaussArtesanalTheme {
+                PushNotifications.start(applicationContext, "7de718c8-4fbe-4413-b02d-4bca1430dcc8")
+                PushNotifications.addDeviceInterest("hello")
                 val navController = rememberNavController()
                 NavHost(navController = navController, startDestination = Routes.Home.route) {
                     composable(Routes.Home.route) {
