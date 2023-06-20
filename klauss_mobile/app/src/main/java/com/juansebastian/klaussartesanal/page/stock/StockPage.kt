@@ -142,7 +142,7 @@ fun StockPage(
                                 Text(text = stock[product].nombre)
                                 Spacer(modifier = Modifier.width(16.dp))
                                 Text(
-                                    text = stock[product].cantidad.toString(),
+                                    text = "${stock[product].cantidad} g.",
                                     color = if (stock[product].cantidad < value) Color(0xFFFF5722) else Color(
                                         0xFF4CAF50
                                     )

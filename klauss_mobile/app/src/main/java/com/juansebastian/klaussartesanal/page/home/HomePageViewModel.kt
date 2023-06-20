@@ -20,8 +20,10 @@ class HomePageViewModel @Inject constructor(private val orderService: OrderServi
     init {
         viewModelScope.launch {
             orderService.getAllOrders()
-                .let { _orders.value = it;Log.d("HomePageViewModel", "orders: $it") }
-
+                .let {
+                    _orders.value = it
+                    Log.d("HomePageViewModel", "orders: $it")
+                }
         }
     }
 }

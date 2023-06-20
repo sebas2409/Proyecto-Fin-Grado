@@ -88,6 +88,9 @@ func NewOrder(ctx *gin.Context) {
 					return
 				}
 				stock.Cantidad -= producto.Ingredients[i].Quantity
+				if stock.Cantidad < 5000 {
+					createMessageAndSend("Stock bajo", fmt.Sprintf("El producto %s está por debajo de los 5000g", ingredient.Name), beamsClient)
+				}
 				_, err2 :=
 					client.Database("klauss_artesanal").
 						Collection("stock").
@@ -100,31 +103,27 @@ func NewOrder(ctx *gin.Context) {
 		}
 		logger.Info(fmt.Sprintf("Se inserto la orden con id: %s", id))
 
-		publishRequest := map[string]interface{}{
-			"fcm": map[string]interface{}{
-				/* para que se envie una notificacion en segundo plano personalizada quitar tod0 lo de la notificacion */
-
-				"notification": map[string]interface{}{
-					"title": "Nuevo PEDIDO",
-					"body":  "HAY UN NUEVO PEDIDO",
-				},
-				//"data": map[string]interface{}{
-				//	"cuerpoMensaje": "mensaje bienvenida",
-				//	"producto1":     "llantas",
-				//	"producto2":     "neumaticos",
-				//},
-			},
-		}
-
-		pubId, err := beamsClient.PublishToInterests([]string{"hello"}, publishRequest)
-		if err != nil {
-			fmt.Println(err)
-		} else {
-			fmt.Println("Publish Id:", pubId)
-		}
+		createMessageAndSend("Nueva orden", "Se ha recibido una nueva orden", beamsClient)
 
 		ctx.JSON(202, gin.H{
 			"msg": id,
 		})
+	}
+}
+
+func createMessageAndSend(title, body string, beamsClient pushnotifications.PushNotifications) {
+	publishRequest := map[string]interface{}{
+		"fcm": map[string]interface{}{
+			"notification": map[string]interface{}{
+				"title": title,
+				"body":  body,
+			},
+		},
+	}
+	pubId, err := beamsClient.PublishToInterests([]string{"hello"}, publishRequest)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("Publish Id:", pubId)
 	}
 }

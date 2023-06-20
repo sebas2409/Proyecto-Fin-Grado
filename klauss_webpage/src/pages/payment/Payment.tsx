@@ -28,7 +28,7 @@ export function Payment() {
 
     useEffect(() => {
         ProductStore.getProducts().subscribe((data) => {
-            let p: Order[] = []
+            const p: Order[] = []
             data.map((product) => {
                 let count = 0
                 data.forEach((p) => {
@@ -42,7 +42,7 @@ export function Payment() {
                     precio: product.price,
                 })
             })
-            let unique = p.filter((v, i, a) => a.findIndex(t => (t.nombre === v.nombre)) === i)
+            const unique = p.filter((v, i, a) => a.findIndex(t => (t.nombre === v.nombre)) === i)
             setData(unique)
         })
     }, [])
@@ -93,7 +93,7 @@ export function Payment() {
                     if (data.length === 0) {
                         return
                     }
-                    fetch('http://192.168.1.142:8080/api/v1/order/new', {
+                    fetch('http://192.168.135.87:8080/api/v1/order/new', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
